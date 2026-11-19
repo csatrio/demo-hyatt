@@ -1,56 +1,94 @@
-# Grand Hyatt Singapore Demo: desktop app
+# Grand Hyatt Singapore Demo: DesignerWorks desktop app
 
-The Grand Hyatt Singapore Demo as a native app for macOS and Windows. The app shows the demo website in its own window and connects to the demo server:
+The Grand Hyatt Singapore Demo runs in the **DesignerWorks desktop app** for macOS and Windows. The demo is given from the desktop app only, not from a web browser.
 
-**Server: https://demo.adaptif.co.id**
+- **On your computer:** the app keeps the document files. It also converts them, makes the thumbnails and reads scanned pages.
+- **On the demo server:** the people, permissions, workflows, approvals, AI sorting and the assistant.
 
-Login details and the demo scenarios are in [DEMO-GUIDE.md](DEMO-GUIDE.md).
+The server's address, `https://demo.adaptif.co.id`, is built into the app.
+
+Login details and the demo scenarios are in [DEMO-GUIDE.md](DEMO-GUIDE.md) (also as [DEMO.pdf](DEMO.pdf)).
 
 ## What is in this folder
 
 | File | For |
 |---|---|
-| `hyatt-sg-demo-mac.app` | macOS, Apple silicon (M1 or later) only |
-| `hyatt-sg-demo-win.exe` | Windows 10 and 11 (64-bit) |
-| `DEMO-GUIDE.md` | how to run the demo, logins, scenarios |
-| `DEMO.pdf` | the demo as a PDF |
-| `demo-uploads/` | files to upload during the demo |
+| `GrandHyattDemo-macos-arm64.zip` | macOS, Apple silicon (M1 or later) |
+| `GrandHyattDemo-windows-x64.zip` | Windows 10 and 11, 64-bit |
+| `DEMO-GUIDE.md`, `DEMO.pdf` | how to run the demo: logins, scenarios, expected waits |
+| `demo-uploads/` | files to upload during the demo: `handover-kitchen/` (ten handover files), `messy-dump.zip` (32 mixed files), `scanned-washer-manual.pdf` (a scanned manual with no text layer) |
+| `screenshots/` | the figures of the guide |
+| `Archive.zip` | the guide, the PDF, the screenshots and `demo-uploads/` in one file (no apps) |
 
-The apps are not signed with a developer certificate, so your computer will ask you to confirm the first start (see below). Only run them if they came from the demo team.
+Each app zip unpacks to one folder:
+
+```
+GrandHyattDemo-<system>/
+  DesignerWorks Grand Hyatt Demo.app     macOS: the app
+  designerworks-hyattsg-demo.exe         Windows: the app
+  golden/                                the demo's starting documents (read-only copy)
+  hsg-files/                             the document files of this computer (filled at the first start)
+```
+
+Everything the app needs is inside the app itself, including its file helper. There is nothing else to install.
+
+- **Keep the folder together.** The app keeps its documents in `hsg-files/` next to it.
+- **Unpack it somewhere you can write**, such as the Desktop or Documents. Do not unpack it into a read-only place or a cloud-synced folder that changes files behind the app's back.
+
+The apps are not signed with a developer certificate, so your computer asks you to confirm the first start (see below). Only run them if they came from the demo team.
 
 ## macOS
 
-1. Copy `hyatt-sg-demo-mac.app` to **Applications** (or any folder you like).
-2. First start only: **right-click** the app and choose **Open**, then click **Open** in the dialog. If macOS only shows "cannot be opened because the developer cannot be verified", go to **System Settings -> Privacy & Security**, scroll down to the message about the app and click **Open Anyway**.
-3. The first-start screen asks for a server. Enter:
-   - **Name:** Grand Hyatt Demo (any name works)
-   - **Address:** `https://demo.adaptif.co.id`
-4. Click save, pick the server, and sign in with a login from [DEMO-GUIDE.md](DEMO-GUIDE.md).
+1. Unpack `GrandHyattDemo-macos-arm64.zip` (double-click it), for example in **Documents**. Keep the folder `GrandHyattDemo-macos-arm64` as it is: do not drag the app out of it into Applications.
+2. First start only: **right-click** `DesignerWorks Grand Hyatt Demo.app` and choose **Open**, then click **Open** in the dialog.
+   - If macOS only says the app "cannot be opened because the developer cannot be verified", go to **System Settings -> Privacy & Security**, scroll to the message about the app and click **Open Anyway**.
+3. The app connects to the demo server by itself. Sign in with a login from [DEMO-GUIDE.md](DEMO-GUIDE.md).
 
-Later starts open the app straight into the demo; double-click it as usual.
+Later starts: double-click the app as usual. No Terminal window opens. The first start takes a few seconds longer while the app unpacks its file helper.
 
 ## Windows
 
-1. Copy `hyatt-sg-demo-win.exe` to a folder you can find, for example the Desktop or `Documents\demo-hyatt`. There is no installer: the file runs as it is.
-2. First start only: Windows SmartScreen may show "Windows protected your PC". Click **More info**, then **Run anyway**.
-3. The app needs **Microsoft Edge WebView2 Runtime**. Windows 10 (version 1809 and later) and Windows 11 normally have it already. If the app does not open, install the Evergreen Runtime from Microsoft's WebView2 page and start the app again.
-4. The first-start screen asks for a server. Enter:
-   - **Name:** Grand Hyatt Demo (any name works)
-   - **Address:** `https://demo.adaptif.co.id`
-5. Click save, pick the server, and sign in with a login from [DEMO-GUIDE.md](DEMO-GUIDE.md).
+1. Right-click `GrandHyattDemo-windows-x64.zip` -> **Extract All...** and pick a folder you can find, for example `Documents`. Do not run the app from inside the zip.
+2. Open the folder and start `designerworks-hyattsg-demo.exe`. There is no installer and no console window.
+3. First start only: Windows SmartScreen may show "Windows protected your PC". Click **More info**, then **Run anyway**.
+4. The app needs the **Microsoft Edge WebView2 Runtime**. Windows 11 and up-to-date Windows 10 have it already. If the window does not open, install the Evergreen Runtime from Microsoft's WebView2 page and start the app again.
+5. The app connects to the demo server by itself. Sign in with a login from [DEMO-GUIDE.md](DEMO-GUIDE.md).
 
 ## Using the app
 
-- The app is the same website as https://demo.adaptif.co.id, in its own window. Everything in [DEMO-GUIDE.md](DEMO-GUIDE.md) works the same way.
-- Files you download are saved through the normal Save dialog. Files you open with "Open original" are copied to a temporary folder that is cleared when the app quits.
-- If the server cannot be reached, the app shows the last copy it saved for the signed-in user (read-only). Actions such as approving or uploading need the connection.
-- Notifications appear as the normal system notifications.
+- **The window:** the demo's pages on top. Along the bottom:
+  - **AI Active** (green) while you are signed in and connected;
+  - **Settings**: theme, offline copies, sign out, and **Document files**, which shows where this computer keeps the files and how much file work is waiting;
+  - **About**: the versions.
+- **Files stay on this computer:**
+  - Uploaded documents are stored in `hsg-files/`. The app converts them to text, makes the thumbnails and splits them for search on this computer.
+  - The server receives only the text and the facts it needs for search, sorting and the assistant.
+  - Opening, previewing and downloading a document reads it from `hsg-files/`.
+  - Who may see which document is still decided by the server.
+- **Scanned pages:**
+  - By default, a scanned PDF is read by text recognition (OCR) on this computer. This is offline, free, and takes about a second per page.
+  - The upload option **Read images and scanned pages (AI vision, costs more)** sends the pages to the AI instead.
+- **Opening and downloading:** files you download go through the normal Save dialog. "Open original" opens a read-only copy in your default program; the copies are deleted when the app quits.
+- **Offline:** without a connection, the app shows the last copy it saved for the signed-in user, read-only. Approving, uploading and the AI need the connection.
+- **Notifications** appear as normal system notifications.
 
-## Signing out and resetting
+## Reset demo
 
-- **Sign out:** user menu (top right) -> Sign out. This also deletes the offline copy kept for that user.
-- **Start over:** sign out, then quit the app. To remove all app data, quit the app and delete its data folder (it holds the server list, settings and the offline copies).
-- Each login in the demo has the same password, listed in DEMO-GUIDE.md.
+- **Who can reset:** `demo.admin` or `admin`, with **Reset demo** at the foot of the side menu. Type `RESET` to confirm.
+- **What it does:** it puts the server **and** this computer's files back to the starting state together.
+  - Everything changed since the last reset is discarded: uploads, approvals, new workflows.
+  - Everyone is signed out.
+  - The app shows "Syncing demo files with the server..." while it restores `hsg-files/` from `golden/`.
+- **Other computers:** a computer running the app when someone else resets the demo notices at its next connection and restores its own files the same way.
+- **If the app says "Update the desktop app":** the server holds newer demo data than this copy of the app. Unpack the newest zip.
+
+To remove everything the app keeps:
+
+1. Quit the app.
+2. Delete the unpacked folder.
+3. Delete the app's data folder. It holds settings, offline copies and the unpacked file helper:
+   - macOS: `~/Library/Application Support/com.csatrio.hyattsg-demo`
+   - Windows: `%APPDATA%\com.csatrio.hyattsg-demo` and `%LOCALAPPDATA%\com.csatrio.hyattsg-demo`
 
 ## Problems
 
@@ -58,8 +96,10 @@ Later starts open the app straight into the demo; double-click it as usual.
 |---|---|
 | Mac: "cannot be opened" | Right-click -> Open, or System Settings -> Privacy & Security -> Open Anyway |
 | Windows: "Windows protected your PC" | More info -> Run anyway |
-| Windows: window does not open | Install the WebView2 Runtime (step 3 above) |
-| "Cannot connect" or a blank page | Check the internet connection, then open https://demo.adaptif.co.id in a browser to confirm the site is up |
-| Wrong server in the list | Remove the profile in the server picker and add it again with the address above |
+| Windows: the window does not open | Install the WebView2 Runtime (Windows step 4) |
+| "Cannot connect" at sign-in | Check the internet connection, wait a minute (the server may be restarting after a reset) and try again |
+| "This file is not on this computer" | The document was uploaded from another computer, and its file lives there. The demo data opens on every computer; an upload opens on the computer it was uploaded from |
+| Settings -> Document files says the folder cannot be written | The folder was unpacked somewhere read-only (or the app runs from inside the zip): unpack it to Documents and start it from there |
+| A scanned page has no text | Upload it again with **Read images and scanned pages** on (the AI reads it), or check that the scan is readable |
 
-Version: 0.1.0, web pin `c2d8e9a`.
+Version: 0.1.0. Web `4bb8843c`, desktop `5e4c907`.

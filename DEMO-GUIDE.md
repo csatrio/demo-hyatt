@@ -1,16 +1,32 @@
 # Grand Hyatt Singapore Demo: operator guide
 
-How to run the demo and all of its scenarios. About 25 minutes for the main path, 10-15 minutes more for the second part (P1-P6).
-Site: **https://demo.adaptif.co.id**. Routes in `code` are pages of the app.
+How to run the demo and all of its scenarios. About 25 minutes for the main path, 10-15 minutes more for the second part (P1-P6), and 5 minutes for the desktop part (D1-D3).
 
-> The screenshots come from the latest build at the time of writing (commit `7327a44`) with the stand-in AI, so recommendation and answer texts are simpler than with the real AI. **Red numbered boxes show where to click**; the notes under each figure say what each number is.
+**The demo is given from the DesignerWorks desktop app only** (macOS or Windows; installation in [README.md](README.md)). Do not use a web browser.
+
+- **On the presenter's computer:** the app keeps the document files in `hsg-files/` next to itself. It converts, previews and OCRs them there.
+- **On the demo server:** people, permissions, workflows, AI sorting and the assistant. Its address, `https://demo.adaptif.co.id`, is built into the app.
+
+Routes in `code` (such as `/purchases`) name the app's pages. In the app you reach them from the side menu, since the window has no address bar.
+
+> The screenshots show the app's pages as they appear inside the desktop window. They were taken with the stand-in AI, so recommendation and answer texts are simpler than with the real AI. **Red numbered boxes show where to click**; the notes under each figure say what each number is.
 
 ## Run the demo
 
-1. Open **https://demo.adaptif.co.id** and log in (see Logins). The demo data is prepared and every scenario below is ready to run.
-2. As `demo.admin`, check **Home -> System health** before you start: no failed jobs, and the Library lists the documents (they convert and index in the background, so give a fresh start a minute or two).
-3. Use two browser profiles, or stay as `demo.admin` and switch person with **User menu -> View as...**.
-4. Keep `demo-uploads/` at hand: `handover-kitchen/` (ten handover files with meaningless names) and `messy-dump.zip` (32 mixed files) are uploaded live.
+1. **Start the desktop app** and sign in (see Logins). The bottom bar turns to **AI Active** (green) once you are signed in and connected. The demo data is prepared, and every scenario below is ready to run.
+2. **Start from a clean demo.** As `demo.admin`, press **Reset demo** at the foot of the side menu, type `RESET` and confirm.
+   - The server and this computer's document files return to the starting state together.
+   - After about a minute the app asks you to sign in again.
+   - Do this before every audience, so the prepared purchases are in their stated states.
+3. **Check System health.** As `demo.admin`, open **Home -> System health**: no failed jobs. Then open **Settings** (bottom bar) -> **Document files**: it should read "Kept on this computer in ... (file helper idle)".
+4. **To switch person**, stay as `demo.admin` and use **User menu -> View as...**, or sign out and sign in as the other person. One app window shows one person at a time.
+   - To show two people side by side, for example the bell counting up live, run the app on a second computer.
+5. **Keep `demo-uploads/` at hand.** These files are uploaded live:
+   - `handover-kitchen/`: ten handover files with meaningless names;
+   - `messy-dump.zip`: 32 mixed files;
+   - `scanned-washer-manual.pdf`: a three-page scan with no text layer.
+
+   Drag them from Finder or Explorer onto the upload area of the app window, or use the area's file picker.
 
 ## Logins
 
@@ -27,10 +43,10 @@ Password for everybody: **`[removed]`**. Ask the demo owner for it.
 | Grace Chua | `grace.chua` | Director of Finance: approves invoices, budget |
 | Rosalind Goh | `rosalind.goh` | Housekeeping: no engineering or finance documents, no FFnE register, workflow start or dashboards |
 | Administrator | `admin` | Users, roles, departments, audit trail |
-| Demo Administrator | `demo.admin` | The presenter: every permission. **Everyone** in Approvals & workflows (also `/open-work`) lists every open step and question with who it waits on, and can approve, reject, complete or accept as an override. **View as...** (user menu) uses the whole app as another person (banner "Viewing as ...", **Stop viewing**); changes are audited under `demo.admin`. **System health** on Home: jobs, conversion failures (Retry), AI spend |
+| Demo Administrator | `demo.admin` | The presenter: every permission. **Reset demo** at the foot of the side menu (also `admin`). **Everyone** in Approvals & workflows (also `/open-work`) lists every open step and question with who it waits on, and can approve, reject, complete or accept as an override. **View as...** (user menu) uses the whole app as another person (banner "Viewing as ...", **Stop viewing**); changes are audited under `demo.admin`. **System health** on Home: jobs, conversion failures (Retry), AI spend |
 
 ## Finding your way (the new interface)
-The menu on the left is grouped by task and shows only what the signed-in person may use (on a phone it opens from the menu button, and the most used pages sit in a bar at the bottom): **Home**, **My work** (Approvals & workflows, Questions, Inbox), **Procurement** (Purchases & projects, FFnE register), **Documents** (Library, Upload, AI sorting), **Insights** (Executive dashboard, Budget, Petty cash), **Assistant**, **Administration**. The top bar has the search box, the inbox bell (its number counts up live) and the user menu (My seal, Credits, View as… for administrators, Sign out). **Home** is each person's "Today": what waits for them, their questions, their purchases, recent documents. Money reads `S$ 31,200.00`, times are Singapore time. The interface is built for a desktop and works the same on a phone (390 px): Home, Approvals, Questions, Inbox, approvals and the asset lookup are made for it.
+The menu on the left is grouped by task and shows only what the signed-in person may use: **Home**, **My work** (Approvals & workflows, Questions, Inbox), **Procurement** (Purchases & projects, FFnE register), **Documents** (Library, Upload, AI sorting), **Insights** (Executive dashboard, Budget, Petty cash), **Assistant**, **Administration**. The top bar has the search box, the inbox bell (its number counts up live) and the user menu (My seal, Credits, View as… for administrators, Sign out). **Home** is each person's "Today": what waits for them, their questions, their purchases, recent documents. Money reads `S$ 31,200.00`, times are Singapore time. The app's own bar along the bottom of the window shows **AI Active** (signed in and connected), **Settings** (theme, offline copies, sign out, **Document files**) and **About** (versions). Without a connection the app shows the last copy it saved for the signed-in person, read-only.
 
 ## The prepared purchases (open `/purchases`, filter titles starting "Demo:")
 | Title | State | Use it for |
@@ -66,8 +82,8 @@ Each step names the pain point it answers. A purchase page has the tabs **Overvi
 
 ### 1. Scattered documents become one searchable library (scattered documents, drawings, data)
 1. Log in as `siti.rahman`. **Home**, then **Documents → Library** (`/documents`): quotes, POs, permits, invoices, drawings, specs, OMM, photos, all typed and linked to assets. The folder panel groups them by document type, vendor and location.
-2. Type `chiller` in the search box and press Enter: keyword and meaning search together; each hit shows its type, a snippet and a match score. Open a quote: preview on the side, or the full page with its converted text, versions and the records it is linked to.
-3. Log out, log in as `rosalind.goh`, repeat the search: engineering and finance documents are not listed or counted (permission-aware everywhere), and her menu has no FFnE register, dashboards or Administration.
+2. Type `chiller` in the search box and press Enter: keyword and meaning search together; each hit shows its type, a snippet and a match score. Open a quote: preview on the side, or the full page with its converted text, versions and the records it is linked to. The preview and **Open original** read the file from this computer (`hsg-files/`); the server only decided that Siti may see it.
+3. Sign out (user menu), sign in as `rosalind.goh` (or **View as...** Rosalind Goh), repeat the search: engineering and finance documents are not listed or counted (permission-aware everywhere), and her menu has no FFnE register, dashboards or Administration.
 
 ![Documents -> Library: search for "chiller" as Siti](screenshots/01a-library-search.jpg)
 
@@ -80,7 +96,7 @@ Each step names the pain point it answers. A purchase page has the tabs **Overvi
 ### 2. Manual paperwork: FFnE Purchase end to end
 1. As `siti.rahman` open `/purchases`, then **Washer extractor**; the **Flow** tab draws the steps, the current one highlighted.
 2. `/questions`: the card "Which quote should … be awarded to?" lists the three quotes, lowest first, with a recommendation and its reason (with the real AI: Straits Laundry Systems, S$ 31,200.00, the lowest). **Accept recommendation**. The step finishes by itself and the award goes to Marcus.
-3. Log in as `marcus.lim` in a second browser (or keep his open: the **bell** in the top bar counts up by itself when Siti accepts). `/inbox`: the approval request arrived; **Open step** on the entry, read the quotes, **Approve with my seal**: his seal and the date are stamped on the approval, the PO document is generated and linked (Overview tab: the seal image on the timeline).
+3. Switch to `marcus.lim` (**View as...**, or sign out and in; with a second computer running the app as Marcus, the **bell** in the top bar counts up by itself when Siti accepts). `/inbox`: the approval request arrived; **Open step** on the entry, read the quotes, **Approve with my seal**: his seal and the date are stamped on the approval, the PO document is generated and linked (Overview tab: the seal image on the timeline).
 4. As `daniel.tan` open **Walk-in chiller**: S$ 80,000.00 is above the threshold, so the approval waits for Daniel (his **Approvals & workflows**, **Approve**), not Marcus (whose list does not show it). That is the routing by amount.
 5. Open **Combi oven replacement (completed)**: every step is green, with seals, a PO equal to the winning quote (S$ 48,000.00), the old oven disposed and the new asset registered (`/ffne`, search `FFNE-`).
 
@@ -157,7 +173,7 @@ Each step names the pain point it answers. A purchase page has the tabs **Overvi
 
 ### 5. FFnE Project and the handover (manual retrieval of project documents)
 1. As `benjamin.koh` open **Main kitchen refit project** from **Purchases & projects** (the **Open** button of the Handover step): both purchases are done, the Handover step waits for an upload.
-2. Drop the ten files of `storage/demo-uploads/handover-kitchen/` on the upload area of that step, then **Mark step complete**. The steps wait by themselves for documents that are still converting (a few seconds) and continue when done. Press **Try this step again** only if a conversion failed for good.
+2. Drag the ten files of `demo-uploads/handover-kitchen/` onto the upload area of that step, then **Mark step complete**. The files are stored and converted on this computer; the steps wait by themselves for documents that are still converting (a few seconds) and continue when done. Press **Try this step again** only if a conversion failed for good.
 3. As `siti.rahman` (the starter; the cards are assigned to them), `/questions`: a batch of ten cards, one per file ("What kind of document is …"), each with a recommendation. **Accept all recommended (10)**, confirm with **Accept all**. The documents get their types and are linked to the new assets; Raj approves the handover (**Approve with my seal**).
 4. For the finished version of this step open **Pool plant refit project**: five cards are waiting; accept them in one click.
 
@@ -178,11 +194,19 @@ Each step names the pain point it answers. A purchase page has the tabs **Overvi
 *Figure 21. Siti: ten cards, one per file, with the AI recommendation. ① One card per file. ② Accept all recommended (10).*
 
 ### 6. AI sorting: the messy dump (scattered documents, nightmare scenario)
-1. As `siti.rahman` open **Documents → Upload** (`/documents/upload`), tick *Make searchable by meaning (AI index)*, choose **AI sorting → Also propose new folders**, drop `storage/demo-uploads/messy-dump.zip` on the upload area, **Upload and submit for approval**. The batch waits for approval. As `marcus.lim` (or `admin`) open the **Review queue** tab, open the batch and **Approve**; the sorting cards go to the approver (Marcus gets read/write access to the documents he released), so stay logged in as `marcus.lim` for the next steps.
-2. `/sorting`: after a minute the group for the batch holds one suggestion per file (folder, confidence, what the AI read); **Accept all suggestions (N)** on the group sorts them. With real keys the AI mostly fits the existing folders, so *New folders suggested by AI* (rework by `admin`: confirm, rename, move, merge) can stay empty for this dump.
-3. Scenario **Sort into the folders that exist**: the demo data contains a ready-made dump of 32 unsorted documents (generic folder, nothing linked; the "N documents not sorted yet" line on `/sorting` counts only these). **Sort the unsorted documents**, choose the scenario, **Start sorting**; suggestions appear over a minute or two, then accept them.
-
-> **Known issue on the build used for these screenshots:** submitting an upload batch (step 1) reported "None of the files could be added", so the approval step has no screenshot. The sorting steps below use the prepared unsorted documents instead.
+1. **Upload without approval (the default).** As `siti.rahman`, open **Documents → Upload** (`/documents/upload`).
+   - The switch **Upload without approval** is on: the files skip approval, and the AI files every document into a folder by itself, creating a new folder when none fits.
+   - Drag `demo-uploads/messy-dump.zip` onto the upload area and press **Upload and file automatically**.
+   - The app unpacks the zip and converts the 32 files on this computer; the server sorts them.
+   - After a minute or two the documents sit in their folders in the **Library**.
+   - Files the AI was unsure about are listed on the tab **Files with low confidence**: check one, or move it to another folder.
+2. **With an approval (the governed path).**
+   - Upload again with **Upload without approval** switched off. Under **Change options**, choose **AI sorting → Also propose new folders** and tick *Make searchable by meaning (AI index)*, then **Upload and submit for approval**.
+   - Switch to `marcus.lim`, open the **Review queue** tab, open the batch and **Approve**. The sorting cards go to the approver (Marcus gets read/write access to the documents he released), so stay as `marcus.lim`.
+   - Open `/sorting`: the group for the batch holds one suggestion per file (folder, confidence, what the AI read). Press **Accept all suggestions (N)** to sort them. With real keys the AI mostly fits the existing folders, so *New folders suggested by AI* (rework by `admin`: confirm, rename, move, merge) can stay empty for this dump.
+3. **Sort into the folders that exist.**
+   - The demo data contains a ready-made dump of 32 unsorted documents (generic folder, nothing linked). The "N documents not sorted yet" line on `/sorting` counts only these.
+   - Press **Sort the unsorted documents**, choose the scenario and **Start sorting**. Suggestions appear over a minute or two; then accept them.
 
 ![Documents -> Upload: the messy dump with AI sorting](screenshots/06a-bulk-upload.jpg)
 
@@ -252,6 +276,32 @@ Then log in as `rosalind.goh` and ask the first question again: the answer says 
 ![Viewing as Siti Rahman: banner on every page](screenshots/09e-viewing-as.jpg)
 
 *Figure 34. Viewing as Siti Rahman: banner on every page. ① Banner. ② Stop viewing.*
+
+## Desktop part: D1-D3 (5 minutes)
+What the desktop app adds: the documents never leave the presenter's computer, scans are read offline, and one button resets everything.
+
+### D1. Your files stay on this computer (2 min) · `siti.rahman`
+1. Open **Settings** (bottom bar) → **Document files**. It shows where the files are kept (the `hsg-files` folder next to the app) and how much file work is waiting.
+2. Take the handover files you uploaded in scenario 5, or upload any document of your own from **Documents → Upload**. (The same file uploaded twice is refused as a duplicate.)
+   - Each file went into `hsg-files/` on this computer, and the app converted it there.
+   - The server receives the text it needs for search and sorting, never the file.
+   - Open the document in the **Library**: the preview and **Open original** read the local file.
+3. Point out the split: people, permissions, workflows, the AI sorting and the assistant run on the server; the files and the file work stay here.
+
+### D2. A scanned manual, read offline (2 min) · `siti.rahman`
+1. **Documents → Upload**, keep **Read images and scanned pages (AI vision, costs more)** *off* (the default; it is under **Change options**), and upload `demo-uploads/scanned-washer-manual.pdf`.
+   - The three pages are photos with no text layer.
+   - The app reads them on this computer with text recognition (OCR): offline, free, about a second per page.
+2. Open the document in the **Library**: its text shows the model "WX-60", the daily checks and the fault codes (E01 to E09). Search `fault codes` finds it.
+3. **Optional:** upload it once more with **Read images and scanned pages** on. The AI reads the pages instead. This is better for photos and handwriting, but it costs AI time and money.
+4. Ask the **Assistant**: "What should be checked daily on the WX-60 washer extractor?" The answer cites the scanned manual.
+
+### D3. Reset demo: server and files together (1 min) · `demo.admin`
+1. **Reset demo** at the foot of the side menu. The dialog lists what will be lost since the last reset. Type `RESET` and confirm.
+2. The server restores its starting data. The app shows "Syncing demo files with the server..." and restores `hsg-files/` from the `golden/` copy next to it, so the uploads of D1 and D2 are gone here too.
+3. Sign in again: everything is as at the start.
+   - A second computer running the app notices the reset at its next connection and restores its own files the same way.
+   - If the server holds newer demo data than this copy of the app, the app refuses the reset before anything changes and says "Update the desktop app".
 
 ## Second part: P1-P6 (10-15 minutes)
 Run after the main click path, or on its own.
@@ -372,15 +422,22 @@ The AI steps are slow on purpose (real models, no shortcut); each shows a status
 
 | Step | Expected wait | What the screen shows | Say meanwhile |
 |---|---|---|---|
+| Upload: conversion on this computer | a few seconds per document; scanned PDFs about 1 s per page (local OCR) | the file appears in the batch, then in the Library | The file never leaves this computer; only its text goes to the server |
+| Upload without approval, `messy-dump.zip` (32 files) | 1-2 minutes until all are filed | the Library fills folder by folder | The AI files each document; unsure ones go to *Files with low confidence* |
+| Reset demo | about a minute | "Syncing demo files with the server...", then sign-in | Server data and local files return to the start together |
 | Handover upload, *Mark step complete* (10 files) | 30-65 s until the 10 cards are on `/questions` | "Working…" under the buttons, then the step completes; the cards arrive in Siti's inbox | The AI reads every file and recommends its type with a reason |
 | `/sorting` *Start sorting*, nightmare (the messy-dump batch) | 35-45 s | button reads "AI is sorting…", list refreshes every few seconds | It reads each document; new classes appear for what fits nothing |
 | `/sorting` *Start sorting*, probable | 25-40 s | same | Only existing classes are allowed |
 | Assistant, one question | 5-20 s (tool searches, then the answer) | "Thinking…" line | It searches only what the user may read; four questions took about 60 s in total |
 | Prepared award/registration cards | instant (already prepared) | | |
 
-Start a long step first, then talk; do not reload the page while "AI is working".
+Start a long step first, then talk; do not quit the app while "AI is working" or while uploads convert.
 
 ## If something goes wrong
 - A step or card is stuck after an upload: steps wait for conversion by themselves. Use **Try this step again** only if **Home -> System health** shows a failed conversion.
-- An AI answer is slow: see the waits above; do not reload the page.
-- The site does not load, or the data looks wrong: wait a minute and retry, then contact whoever runs the demo server.
+- An AI answer is slow: see the waits above; do not quit the app.
+- The data looks wrong, or the prepared purchases are not in their stated states: **Reset demo** as `demo.admin`.
+- "Cannot connect" or **AI Off** in the bottom bar: check the internet connection; the server may be restarting (after a reset it takes about a minute). Then contact whoever runs the demo server.
+- "This file is not on this computer": the document was uploaded from another computer, whose app keeps its file. The demo data opens on every computer.
+- A scanned page shows no text: upload it again with **Read images and scanned pages** on.
+- Settings → Document files says the folder cannot be written: the app runs from a read-only place (or from inside the zip). Unpack the zip to Documents and start it from there.

@@ -1,11 +1,8 @@
 # Grand Hyatt Singapore Demo: DesignerWorks desktop app
 
-The Grand Hyatt Singapore Demo runs in the **DesignerWorks desktop app** for macOS and Windows. The demo is given from the desktop app only, not from a web browser.
+The Grand Hyatt Singapore Demo runs in the **DesignerWorks desktop app** for macOS and Windows. The demo is given from the desktop app only.
 
-- **On your computer:** the app keeps the document files. It also converts them, makes the thumbnails and reads scanned pages.
-- **On the demo server:** the people, permissions, workflows, approvals, AI sorting and the assistant.
-
-The server's address, `https://demo.adaptif.co.id`, is built into the app.
+The app keeps the document files on your computer. It converts them, makes the thumbnails and reads scanned pages there too.
 
 Login details and the demo scenarios are in [DEMO-GUIDE.md](DEMO-GUIDE.md) (also as [DEMO.pdf](DEMO.pdf)).
 
@@ -42,7 +39,7 @@ The apps are not signed with a developer certificate, so your computer asks you 
 1. Unpack `GrandHyattDemo-macos-arm64.zip` (double-click it), for example in **Documents**. Keep the folder `GrandHyattDemo-macos-arm64` as it is: do not drag the app out of it into Applications.
 2. First start only: **right-click** `DesignerWorks Grand Hyatt Demo.app` and choose **Open**, then click **Open** in the dialog.
    - If macOS only says the app "cannot be opened because the developer cannot be verified", go to **System Settings -> Privacy & Security**, scroll to the message about the app and click **Open Anyway**.
-3. The app connects to the demo server by itself. Sign in with a login from [DEMO-GUIDE.md](DEMO-GUIDE.md).
+3. Sign in with a login from [DEMO-GUIDE.md](DEMO-GUIDE.md).
 
 Later starts: double-click the app as usual. No Terminal window opens. The first start takes a few seconds longer while the app unpacks its file helper.
 
@@ -52,7 +49,7 @@ Later starts: double-click the app as usual. No Terminal window opens. The first
 2. Open the folder and start `designerworks-hyattsg-demo.exe`. There is no installer and no console window.
 3. First start only: Windows SmartScreen may show "Windows protected your PC". Click **More info**, then **Run anyway**.
 4. The app needs the **Microsoft Edge WebView2 Runtime**. Windows 11 and up-to-date Windows 10 have it already. If the window does not open, install the Evergreen Runtime from Microsoft's WebView2 page and start the app again.
-5. The app connects to the demo server by itself. Sign in with a login from [DEMO-GUIDE.md](DEMO-GUIDE.md).
+5. Sign in with a login from [DEMO-GUIDE.md](DEMO-GUIDE.md).
 
 ## Using the app
 
@@ -62,9 +59,8 @@ Later starts: double-click the app as usual. No Terminal window opens. The first
   - **About**: the versions.
 - **Files stay on this computer:**
   - Uploaded documents are stored in `hsg-files/`. The app converts them to text, makes the thumbnails and splits them for search on this computer.
-  - The server receives only the text and the facts it needs for search, sorting and the assistant.
   - Opening, previewing and downloading a document reads it from `hsg-files/`.
-  - Who may see which document is still decided by the server.
+  - Each person sees only the documents they are allowed to see.
 - **Scanned pages:**
   - By default, a scanned PDF is read by text recognition (OCR) on this computer. This is offline, free, and takes about a second per page.
   - The upload option **Read images and scanned pages (AI vision, costs more)** sends the pages to the AI instead.
@@ -75,12 +71,12 @@ Later starts: double-click the app as usual. No Terminal window opens. The first
 ## Reset demo
 
 - **Who can reset:** `demo.admin` or `admin`, with **Reset demo** at the foot of the side menu. Type `RESET` to confirm.
-- **What it does:** it puts the server **and** this computer's files back to the starting state together.
+- **What it does:** it puts the demo **and** this computer's files back to the starting state together.
   - Everything changed since the last reset is discarded: uploads, approvals, new workflows.
   - Everyone is signed out.
-  - The app shows "Syncing demo files with the server..." while it restores `hsg-files/` from `golden/`.
+  - The app shows a short "Syncing demo files..." notice while it restores `hsg-files/` from `golden/`.
 - **Other computers:** a computer running the app when someone else resets the demo notices at its next connection and restores its own files the same way.
-- **If the app says "Update the desktop app":** the server holds newer demo data than this copy of the app. Unpack the newest zip.
+- **If the app says "Update the desktop app":** this copy of the app is older than the demo data. Unpack the newest zip.
 
 To remove everything the app keeps:
 
@@ -97,7 +93,7 @@ To remove everything the app keeps:
 | Mac: "cannot be opened" | Right-click -> Open, or System Settings -> Privacy & Security -> Open Anyway |
 | Windows: "Windows protected your PC" | More info -> Run anyway |
 | Windows: the window does not open | Install the WebView2 Runtime (Windows step 4) |
-| "Cannot connect" at sign-in | Check the internet connection, wait a minute (the server may be restarting after a reset) and try again |
+| "Cannot connect" at sign-in | Check the internet connection, wait a minute (a reset takes about a minute) and try again |
 | "This file is not on this computer" | The document was uploaded from another computer, and its file lives there. The demo data opens on every computer; an upload opens on the computer it was uploaded from |
 | Settings -> Document files says the folder cannot be written | The folder was unpacked somewhere read-only (or the app runs from inside the zip): unpack it to Documents and start it from there |
 | A scanned page has no text | Upload it again with **Read images and scanned pages** on (the AI reads it), or check that the scan is readable |

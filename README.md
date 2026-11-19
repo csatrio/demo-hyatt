@@ -4,7 +4,7 @@ The Grand Hyatt Singapore Demo runs in the **DesignerWorks desktop app** for mac
 
 The app keeps the document files on your computer. It converts them, makes the thumbnails and reads scanned pages there too.
 
-Login details and the demo scenarios are in [DEMO-GUIDE.md](DEMO-GUIDE.md) (also as [DEMO.pdf](DEMO.pdf)).
+Login details and the demo scenarios are in [DEMO-GUIDE.md](DEMO-GUIDE.md) (also as [DEMO.pdf](DEMO.pdf)). To watch it first, play [DEMO-VIDEO.mp4](DEMO-VIDEO.mp4).
 
 ## What is in this folder
 
@@ -13,6 +13,8 @@ Login details and the demo scenarios are in [DEMO-GUIDE.md](DEMO-GUIDE.md) (also
 | `GrandHyattDemo-macos-arm64.zip` | macOS, Apple silicon (M1 or later) |
 | `GrandHyattDemo-windows-x64.zip` | Windows 10 and 11, 64-bit |
 | `DEMO-GUIDE.md`, `DEMO.pdf` | how to run the demo: logins, scenarios, expected waits |
+| `DEMO-VIDEO.mp4` | the video tutorial: 9 minutes, narrated, with subtitles and chapters (install, every scenario, the desktop part) |
+| `video-src/` | the video's script and renderer, to re-render it after a change |
 | `demo-uploads/` | files to upload during the demo: `handover-kitchen/` (ten handover files), `messy-dump.zip` (32 mixed files), `scanned-washer-manual.pdf` (a scanned manual with no text layer) |
 | `screenshots/` | the figures of the guide |
 | `Archive.zip` | the guide, the PDF, the screenshots and `demo-uploads/` in one file (no apps) |
